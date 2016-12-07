@@ -1,11 +1,12 @@
+import pickle
 from collections import namedtuple
+
 from bs4 import BeautifulSoup
 
-Event = namedtuple('Event', 'id, card, abstract, authors, title, datetime')
+Event = namedtuple('Event', 'id, card, abstract, authors, title, datetime, type')
 
 events ={}
-
-for i in range(3000, 3040):
+for i in range(9999):
     with open('data/'+str(i)+'.html') as fin:
         soup = BeautifulSoup(fin.read())
         maincard = soup.find_all('div', {'class':'maincard'})
@@ -21,8 +22,12 @@ for i in range(3000, 3040):
         authors = soup.find('div', {'class':'maincardFooter'}).text
         datetime = soup.find('div', {'class':'maincardHeader'}).text
         title = soup.find('div', {'class':'maincardBody'}).text
-        events[int(idx)] = Event(id=idx, card=maincard, abstract=abstract, 
+        type = soup.find('div', {'class':'maincardType'}).text
+
+        events[int(idx)] = Event(id=idx, card=maincard, abstract=abstract, type=type, 
                                  authors=authors, title=title, datetime=datetime)
 
-print (events[3039])
-print (len(events))
+with open('nips2016.pk', 'wb') as fout:
+    pickle.dump(events, fout)
+
+print (len(events)) # Hint: Use Python3 not 2. https://pythonclock.org
