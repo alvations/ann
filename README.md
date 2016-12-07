@@ -6,7 +6,7 @@ So made `nips2016-presenting.pk` while lunch, I had.
 
 Have fun! And now, let's NLP this...
 
-(**Disclaimer**: This repo is given as-is. The author is not affiliated to the NIPS organizers nor the web-host of https://nips.cc .)
+**Disclaimer**: This repo is given as-is. The author is not affiliated to the NIPS organizers nor the web-host of https://nips.cc 
 
 
 
