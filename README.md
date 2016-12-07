@@ -1,4 +1,4 @@
-# nips2016-conf-finder
+# NIPS2016 Finder 
 
 After much complaints: https://twitter.com/yoavgo/status/806287855626715140
 And now, we have `nips2016.pk`.
