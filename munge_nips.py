@@ -1,7 +1,10 @@
 import pickle
+#import sys
 from collections import namedtuple
 
 from bs4 import BeautifulSoup
+
+#sys.setrecursionlimit(10000)
 
 Event = namedtuple('Event', 'id, card, abstract, authors, title, datetime, etype')
 
@@ -24,10 +27,10 @@ for i in range(9999):
         title = soup.find('div', {'class':'maincardBody'}).text
         etype = soup.find('div', {'class':'maincardType'}).text
 
-        events[int(idx)] = Event(id=idx, card=maincard, abstract=abstract, etype=etype, 
+        events[int(idx)] = Event(id=idx, card=str(maincard), abstract=abstract, etype=etype, 
                                  authors=authors, title=title, datetime=datetime)
 
-with open('nips2016.pk', 'wb') as fout:
+with open('nips.pk', 'wb') as fout:
     pickle.dump(events, fout)
 
 print (len(events)) # Hint: Use Python3 not 2. https://pythonclock.org
