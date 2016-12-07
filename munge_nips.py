@@ -3,7 +3,7 @@ from collections import namedtuple
 
 from bs4 import BeautifulSoup
 
-Event = namedtuple('Event', 'id, card, abstract, authors, title, datetime, type')
+Event = namedtuple('Event', 'id, card, abstract, authors, title, datetime, etype')
 
 events ={}
 for i in range(9999):
@@ -22,9 +22,9 @@ for i in range(9999):
         authors = soup.find('div', {'class':'maincardFooter'}).text
         datetime = soup.find('div', {'class':'maincardHeader'}).text
         title = soup.find('div', {'class':'maincardBody'}).text
-        type = soup.find('div', {'class':'maincardType'}).text
+        etype = soup.find('div', {'class':'maincardType'}).text
 
-        events[int(idx)] = Event(id=idx, card=maincard, abstract=abstract, type=type, 
+        events[int(idx)] = Event(id=idx, card=maincard, abstract=abstract, etype=etype, 
                                  authors=authors, title=title, datetime=datetime)
 
 with open('nips2016.pk', 'wb') as fout:
